@@ -12,11 +12,12 @@ def index(request):
     if request.method == "POST":
         standard = request.POST["std"]
         roll = int(request.POST["rollno"])
-        image = request.FILES["image"]
+        image = request.POST["img"]
         for i in obj:
             stand = str(i.standard)
             roll_no = int(i.roll)
-            if standard == stand and roll == roll_no and image == image:
+            images = str(i.image)
+            if standard == stand and roll == roll_no and image == images:
                 data = i
             else:
                 res = "No Record Found..."
@@ -32,9 +33,9 @@ def insert(request):
         city = request.POST["city"]
         contact = request.POST["contact"]
         std = request.POST["std"]
-        image = request.POST["img"]
+        img = request.POST["img"]
         user = Insert.objects.create(
-            name=name, rollno=rollno, city=city, contact=contact, std=std, img=image
+            name=name, rollno=rollno, city=city, contact=contact, std=std, img=img
         )
         user.save()
         print("User created")
@@ -73,12 +74,13 @@ def service(request):
 
 def contact(request):
     if request.method == "POST":
-        fulname = request.POST["fulname"]
+        name = request.POST["name"]
         email = request.POST["email"]
-        mob = request.POST["mob"]
-        mes = request.POST["mes"]
-        user = Contact.objects.create(fulname=fulname, email=email, mob=mob, mes=mes)
+        mobile = request.POST["mobile"]
+        messsage = request.POST["message"]
+        user = Contact.objects.create(name=name, email=email, mobile=mobile, messsage=messsage)
         user.save()
+        print("User created")
         return redirect("/")
     return render(request, "blog/contact.html")
 

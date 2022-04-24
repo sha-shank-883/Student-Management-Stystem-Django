@@ -9,13 +9,16 @@
     <div class="contact-box">
       <div class="left">
         <img src="{% static 'images/contactuss.png' %}" style="margin-top: 120px; height: 320px; width: 320px;">
+        <div class="right">
+          <h2>Contact Us</h2>
       </div>
-      <div class="right">
-        <h2>Contact Us</h2>
-        <input type="text" class="field" placeholder="Your Full Name">
-        <input type="text" class="field" placeholder="Your Email">
+      <form  method="POST">
+        {% csrf_token %}
+        <input type="text" class="field" name="name" placeholder="Your Full Name" Required>
+        <input type="text" class="field" name="email" placeholder="Your Email" Required>
+        <input type="text" class="field" name="mobile" placeholder="Your Mobile" Required>
         <!-- <input type="text" class="field" placeholder="Phone"> -->
-        <textarea placeholder="Message" class="field"></textarea>
+        <textarea placeholder="Message" name="message" class="field" Required></textarea>
         <iframe width="345" height="150" frameborder="0" scrolling="no" marginheight="0"
         marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Mumbai&amp;aq=&amp;sll=19.056545,72.853394&amp;sspn=0.010121,0.021136&amp;ie=UTF8&amp;hq=&amp;hnear=Mumbai,+Maharashtra&amp;t=m&amp;z=10&amp;ll=19.075984,72.877656&amp;output=embed">
         </iframe>
@@ -25,6 +28,7 @@
         <br/>
         <br/> 
         <button class="btn">Send</button>
+      </form>
       </div>
     </div>
   </div>

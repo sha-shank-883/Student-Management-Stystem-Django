@@ -573,6 +573,7 @@ background: linear-gradient(90deg, rgba(38,48,181,1) 12%, rgba(184,42,190,1) 45%
 .insert {
   background-color: lightblue;
   color: black;
+  margin-bottom: 90px;
 }
 
 nav {

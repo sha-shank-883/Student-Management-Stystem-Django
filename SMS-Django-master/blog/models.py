@@ -52,13 +52,13 @@ class About(models.Model):
 
 
 class Contact(models.Model):
-    fulname = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, default='')
     email = models.EmailField(max_length=20)
-    mob = models.TextField(max_length=10, default=True)
+    mobile = models.TextField(max_length=10, default=True)
     messsage = models.TextField(max_length=200)
 
     def __str__(self):
-        return self.fulname
+        return self.name
 
 
 class Feedback(models.Model):
