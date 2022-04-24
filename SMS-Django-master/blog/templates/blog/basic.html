@@ -18,10 +18,14 @@
 
   </head>
   <body>
+    <div class="container">
+      <div style="background-image: url('{% static "images/bgf-1.png" %}'); 
+      background-size: cover; height:134vh; width:100%">
+
     <nav class="nav" id="myTopnav">
       <label class="logo" align="right" style="margin-right: 40px;"><a class="hlink" href="{% url 'index' %}"><img src="{% static 'images/mainlogo.png' %}"style="margin-top: 10px; height: 30px; width: 30px;">SMS</a></label>
       {% if user.is_authenticated %}
-      <li>{{user.first_name}}</li>
+      <li class="hlink"><a href="{% url 'index' %}" >{{user.first_name}}</a></li>
       {% endif %}
       <ul>
         <li><a class="nav n1" href="{% url 'index' %}">Home</a></li>
@@ -40,25 +44,17 @@
         
       </ul>
       <a href="javascript:void(0);" id="icon" onclick="myFunction()"><i class="fas fa-bars"></i></a>
-      {% comment %} <a href="javascript:void(0);" onclick="respScreen()" id="icon"><i class="fas fa-bars"></i></a> {% endcomment %}
-      {% comment %} <a href="javascript:void(0);" class="icon" onclick="respScreen()">&#9776;</a> {% endcomment %}
+     
     </nav>
-    <div class="container">
-  <div style="background-image: url('{% static "images/bgf-1.png" %}'); 
-  background-size: cover; height:134vh; width:100%">
-  {% comment %} <div style="margin:0px; height: 90vh; width: 98%;"> {% endcomment %}
-    {% comment %} <img src='{% static "images/bgf.png" %}'style="margin:0px; height: 90vh; width: 100%;"> {% endcomment %}
-    {% comment %} <img src='{% static "images/bgf-1.png" %}'style=" height: 100vh; width: 100%;"> {% endcomment %}
    
-	<!-- <h3 class="header" align="right" style="margin-right: 20px;"><a href="admin">Admin Login</a></h3> -->
 
   <marquee behavior="scroll" direction="left"><h1 class="title">Welcome to Student Management System </h1></marquee>
-  {% comment %} <div> <img src='{% static "images/bg-9.png" %}'style="margin:0px; height: 500; width: 550px;"></div> {% endcomment %}
+
 {% block body %}
  {% endblock %}
   </div>
 {% if user.is_authenticated %}
-<br><br><br><br><br><br><br><br><br><br><br><br>
+{% comment %} <br><br><br><br><br><br><br><br><br><br><br><br> {% endcomment %}
 <footer>
   <svg viewBox="0 0 120 28">
    <defs> 
@@ -92,7 +88,7 @@
       <path   id="wave1"  class="wave" d="M 0,10 C 30,10 30,15 60,15 90,15 90,10 120,10 150,10 150,15 180,15 210,15 210,10 240,10 v 28 h -240 z" />
     </g>
   </g -->
-</div>
+{% comment %} </div> {% endcomment %}
   
   </svg>
   <div class="footer-bottom">
@@ -102,6 +98,7 @@
 <li><a class="hlink" href="{% url 'about' %}">Enquiry</a></li>
 <li><a class="hlink" href="{% url 'contact' %}">Contact Us</a></li>
 <li><a class="hlink" href=" {% url 'feedback' %}">Feedback</a></li>
+<li><a class="hlink" href="{% url 'dashboard' %}">Dashboard</a></li>
 <li><a class="hlink" href="{% url 'logout' %}">Logout</a></li>
 </ul>
 </div>
@@ -164,7 +161,7 @@
         <li><a class="hlink"  href="{% url 'about' %}">Enquiry</a></li>
         <li><a class="hlink" href="{% url 'contact' %}">Contact Us</a></li>
         <li><a class="hlink" href=" {% url 'feedback' %}">Feedback</a></li>
-        <li><a class="hlink" href="{% url 'logout' %}">Logout</a></li>
+        <li><a class="hlink" href="{% url 'login' %}">Login</a></li>
       </ul>
     </div>
     <div class="socialdiv">
@@ -182,7 +179,9 @@
         </div>
             {% comment %} <div>done with fun - by &copy;<a href="www.chaba.de">Uwe Chardon</a></div> {% endcomment %}
           </footer>
-        {% endif %}
+        </div>
+          </div>
+          {% endif %}
       {% comment %} {% block active_link %}.n1{%endblock%} {% endcomment %}
       <script>
         function myFunction() {
@@ -196,6 +195,6 @@
         </script> 
         <script>
           $('nav').find('{% block active_link%}{%endblock%}').addClass('active')
-          </script>
+        </script>
       </body>
 </html>

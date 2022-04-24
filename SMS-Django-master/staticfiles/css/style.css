@@ -90,6 +90,7 @@ textarea {
 	font-size: 1.1rem;
 	border: none;
 	outline: none;
+	position: relative;
 	cursor: pointer;
 	transition: .3s;
 }
