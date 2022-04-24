@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>SMS Dashboard</title>
+	{% comment %} {% block active_link %}.n5{%endblock%} {% endcomment %}
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+	<link rel="javascript" href="{% static 'javascript/responsive.js' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  
+	  <link rel="stylesheet" type="text/css"  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+	  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+</head>
+<body bgcolor="D7D4DF";>
+	<div class="admintitle" align="center">
+		<h3><a class="hlink" href="{% url 'index' %}" style="float: right; margin-right: 30px; color: #fff; font-size: 20px;">Home</a></h3>
+		<h1>Welcome to Dashboard</h1>
+	</div>
+
+	<div class="Dashboard">
+		<table style="width: 30%;" align="center">
+			<tr>
+				<td>1.</td><td><a class="dlink" href="{% url 'insert' %}">Insert Student Details</a></td>
+			</tr>
+			<tr>
+				<td>2.</td><td><a class="dlink" href="{% url 'update' %}">Update Student Details</a></td>
+			</tr>
+			<tr>
+				<td>3.</td><td><a class="dlink" href="{% url 'delete' %}">Delete Student Details</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<footer>
+		<svg viewBox="0 0 120 28">
+		 <defs> 
+			<filter id="goo">
+			  <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur" />
+			  <feColorMatrix in="blur" mode="matrix" values="
+				   1 0 0 0 0  
+				   0 1 0 0 0  
+				   0 0 1 0 0  
+				   0 0 0 13 -9" result="goo" />
+			  <xfeBlend in="SourceGraphic" in2="goo" />
+			</filter>
+			 <path id="wave" d="M 0,10 C 30,10 30,15 60,15 90,15 90,10 120,10 150,10 150,15 180,15 210,15 210,10 240,10 v 28 h -240 z" />
+		  </defs> 
+		
+		   <use id="wave3" class="wave" xlink:href="#wave" x="0" y="-2" ></use> 
+		   <use id="wave2" class="wave" xlink:href="#wave" x="0" y="0" ></use>
+		 
+		 
+		  <g class="gooeff" filter="url(#goo)">
+		  
+		  <circle class="drop drop1" cx="1.2" cy="5.4" r="8.8"  />
+		  <circle class="drop drop2" cx="5.2" cy="5.1" r="7.5"  />
+		  <circle class="drop drop3" cx="10.2" cy="5.3" r="9.2"  />
+			<circle class="drop drop4" cx="3.2" cy="5.4" r="8.8"  />
+		  <circle class="drop drop5" cx="14.2" cy="5.1" r="7.5"  />
+		  <circle class="drop drop6" cx="17.2" cy="4.8" r="9.2"  />
+		  <use id="wave1" class="wave" xlink:href="#wave" x="0" y="1" />
+		 </g>  
+			<!-- g mask="url(#xxx)">
+			<path   id="wave1"  class="wave" d="M 0,10 C 30,10 30,15 60,15 90,15 90,10 120,10 150,10 150,15 180,15 210,15 210,10 240,10 v 28 h -240 z" />
+			</g>
+		  </g -->
+		
+		</svg>
+		<div class="footer-bottom">
+		  <div class="footer-menu">
+	<ul class="f-menu">
+	  <li><a class="hlink" href="{% url 'index' %}">Home</a></li>
+	  <li><a class="hlink" href="{% url 'about' %}">Enquiry</a></li>
+	  <li><a class="hlink" href="{% url 'contact' %}">Contact Us</a></li>
+	  <li><a class="hlink" href=" {% url 'feedback' %}">Feedback</a></li>
+	  <li><a class="hlink" href="{% url 'logout' %}">Logout</a></li>
+	</ul>
+  </div>
+  <div class="socialdiv">
+	<ul class="socials">
+	  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+			  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+			  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+			  <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+			  <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+		  </ul>
+		  <div class="copyright">
+			<p>copyright &copy; <a href="https://sha-shank-883.github.io/shashanksinghal"  target="_blank">Shashank Singhal & Pratik Soam</a>  </p>
+		  </div>
+		</div>
+	  </div>
+		  {% comment %} <div>done with fun - by &copy;<a href="www.chaba.de">Uwe Chardon</a></div> {% endcomment %}
+		</footer>
+
+</body>
+</html>
