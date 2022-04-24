@@ -18,7 +18,7 @@
 
   </head>
   <body>
-    <nav id="myTopnav">
+    <nav class="nav" id="myTopnav">
       <label class="logo" align="right" style="margin-right: 40px;"><a class="hlink" href="{% url 'index' %}"><img src="{% static 'images/mainlogo.png' %}"style="margin-top: 10px; height: 30px; width: 30px;">SMS</a></label>
       {% if user.is_authenticated %}
       <li>{{user.first_name}}</li>
@@ -45,7 +45,7 @@
     </nav>
     <div class="container">
   <div style="background-image: url('{% static "images/bgf-1.png" %}'); 
-  background-size: cover; height:125vh; width:100%">
+  background-size: cover; height:134vh; width:100%">
   {% comment %} <div style="margin:0px; height: 90vh; width: 98%;"> {% endcomment %}
     {% comment %} <img src='{% static "images/bgf.png" %}'style="margin:0px; height: 90vh; width: 100%;"> {% endcomment %}
     {% comment %} <img src='{% static "images/bgf-1.png" %}'style=" height: 100vh; width: 100%;"> {% endcomment %}
