@@ -1,5 +1,7 @@
 from distutils.command.upload import upload
+# import uuid
 from email.policy import default
+from pickle import NONE
 from django.db import models
 
 # from location_field.models.plain import PlainLocationField
@@ -27,13 +29,14 @@ standard = (
 
 
 class Student(models.Model):
-    # id = models.AutoField()
+    # id = models.AutoField(primary_key = True)
+    # Id = models.IntegerField(primary_key=True)
     roll = models.IntegerField()
     name = models.CharField(max_length=30)
     city = models.CharField(max_length=20)
     contact = models.CharField(max_length=20)
     standard = models.CharField(max_length=20, choices=standard, default="1st")
-    image = models.ImageField(upload_to="images")
+    img = models.ImageField(upload_to='images')
     # image = models.ImageField()
 
     def __str__(self):
@@ -56,6 +59,7 @@ class Contact(models.Model):
     email = models.EmailField(max_length=20)
     mobile = models.TextField(max_length=10, default=True)
     messsage = models.TextField(max_length=200)
+    # maps = models.PlainLocationField(based_fields=['city'], zoom=7)
 
     def __str__(self):
         return self.name
@@ -72,30 +76,21 @@ class Feedback(models.Model):
         return self.fname
 
 
-class Insert(models.Model):
-    rollno = models.CharField(max_length=30)
-    name = models.CharField(max_length=30)
-    city = models.CharField(max_length=50)
-    contact = models.EmailField(max_length=20)
-    std = models.TextField(max_length=300)
-    img = models.ImageField(upload_to="images")
+# class Student(models.Model):
+#     id = models.IntegerField(primary_key=True)
+#     rollno = models.IntegerField(max_length=30)
+#     name = models.CharField(max_length=30)
+#     city = models.CharField(max_length=50)
+#     contact = models.EmailField(max_length=20)
+#     std = models.TextField(max_length=300)
+#     img = models.ImageField(upload_to="images")
 
-    def __str__(self):
-        return self.rollno
+#     def __str__(self):
+#         return self.name
 
+# class Search(models.Model):
+#     stdname = models.CharField(max_length=20)
+#     standard = models.CharField(max_length=20, choices=standard, default="1st")
 
-class Update(models.Model):
-    std = models.CharField(max_length=30)
-    stdname = models.CharField(max_length=20)
-    standard = models.CharField(max_length=20, choices=standard, default="1st")
-
-    def __str__(self):
-        return self.std
-
-
-class Delete(models.Model):
-    std = models.CharField(max_length=30)
-    stdname = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.std
+#     def __str__(self):
+#         return self.stdname

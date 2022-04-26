@@ -1,54 +1,90 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
-from .models import Student, About, Feedback, Contact, Insert, Update, Delete
+from django.shortcuts import render, redirect, HttpResponse
+from .models import Student, About, Feedback, Contact
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
 
 # from location_field.models.plain import PlainLocationField
 
-
 def index(request):
     obj = Student.objects.all()
     data = ""
     if request.method == "POST":
-        standard = request.POST["std"]
         roll = int(request.POST["rollno"])
-        image = request.POST["img"]
-        for i in obj:
-            stand = str(i.standard)
-            roll_no = int(i.roll)
-            images = str(i.image)
-            if standard == stand and roll == roll_no and image == images:
-                data = i
+        standard = request.POST["standard"]
+        for s in obj:
+            stand = str(s.standard)
+            roll_no = int(s.roll)
+            
+            if  roll == roll_no and  standard == stand  :
+                data = s
             else:
                 res = "No Record Found..."
-        return render(request, "blog/index.html", {"data": data, "res": res})
-    return render(request, "blog/index.html")
+        return render(request, "blog/student.html", { "res": res, "data": data})
+    return render(request, "blog/student.html")
 
 
-def insert(request):
-    # roll=request.POST['rollno']
+def student(request):
     if request.method == "POST":
-        rollno = request.POST["rollno"]
+        id=request.POST['id']
+        roll = request.POST["roll"]
         name = request.POST["name"]
         city = request.POST["city"]
         contact = request.POST["contact"]
-        std = request.POST["std"]
-        img = request.POST["img"]
-        user = Insert.objects.create(
-            name=name, rollno=rollno, city=city, contact=contact, std=std, img=img
+        standard = request.POST["standard"]
+        img = request.FILES["img"]
+        user = Student.objects.create(
+          id=id, roll=roll, name=name, city=city, contact=contact, standard=standard, img=img
         )
         user.save()
         print("User created")
         return redirect("/")
-    return render(request, "blog/insert.html")
+    return render(request, "blog/Student.html")
+# def search(request):
+#     if request.method == "POST":
+#        std = request.POST["std"]
+#        stdname = request.POST["stdname"]
+#        Student = Student.objects.filter(name__contains=stdname)
+#        user =  search.objects.create(
+#            std=std, stdname=stdname
+#         )
+#        user.save()
+#     #    print("User created")
+#        return render(request, "blog/update.html", {'stdname':stdname, "name":Student})
+#     else:
+#        return render(request, "blog/update.html")
 
 
 def update(request):
-    return render(request, "blog/update.html")
+	obj= Student.objects.all()
+	obj=Student.objects.order_by().values('standard').distinct()
+	if request.method == 'POST':
+		data=[]
+		s=1
+		standard=request.POST['standard']
+		name= request.POST['name']
+		stu=Student.objects.filter(standard=standard)
+		for i in stu:
+			if name in i.name:
+				data.append((s,i))
+				s+=1
+		return render(request,'blog/update.html',{'data':data})
+	return render(request,'blog/update.html',{'obj':obj})
 
 
 def delete(request):
-    return render(request, "blog/delete.html")
+	obj= Student.objects.all()
+	obj=Student.objects.order_by().values('standard').distinct()
+	if request.method == 'POST':
+		data=''
+		standard=request.POST['standard']
+		name= request.POST['name']
+		stu=Student.objects.filter(standard=standard,name=name)
+		if stu.exists():
+			data=stu.first()
+		else:
+			HttpResponse("<h1>Data not found</h1>")
+		return render(request,'blog/delete.html',{'data':data})
+	return render(request,'blog/delete.html',{'obj':obj})
 
 
 def about(request):

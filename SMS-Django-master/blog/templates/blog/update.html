@@ -22,7 +22,7 @@
 		<h1>Welcome to Dashboard - Update Data</h1>
 	</div>
 		<table align="center" style="margin-top: 5px;">
-			<form method="post">
+			<form method="POST">
 				{% csrf_token %}
 				<tr>
 					<th>Select Standard</th>
@@ -34,7 +34,7 @@
 						{% endfor %}
 					</select> -->
 
-					<select name="std">
+					<select name="standard">
 						<option value="1st">1st</option>
 						<option value="2nd">2nd</option>
 						<option value="3rd">3rd</option>
@@ -57,7 +57,7 @@
 					</td>
 				
 					<th>Enter Student Name</th>
-					<td><input type="text" name="stdname" placeholder="Enter Student Name" required="required"></td>
+					<td><input type="text" name="name" placeholder="Enter Student Name" required="required"></td>
 
 					<td colspan="2"><input type="submit" name="submit" value="Search"></td>
 				</tr>
@@ -82,8 +82,9 @@
 
 				<!-- <td align="center">{{data.image}}</td> -->
 				<td align="center">{{ s }}</td>
-				<td rowspan="5"><img src="{{ i.image.url }}" style="max-height: 120px; max-width: 70px; padding-left: 10px;"></td>
+				<td rowspan="5"><img src="{{ i.img.url }}" style="max-height: 120px; max-width: 70px; padding-left: 10px;"></td>
 				<td align="center">{{i.name}}</td>
+				<td align="center">{{i.standard}}</td>
 				<td align="center">{{i.roll}}</td>
 				<td align="center"><a href="{% url 'insert' %}">Edit</a></td>
 			</tr>
