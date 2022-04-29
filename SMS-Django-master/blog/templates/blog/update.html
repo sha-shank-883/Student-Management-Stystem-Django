@@ -87,7 +87,8 @@
 				<td align="center">{{i.name}}</td>
 				<td align="center">{{i.standard}}</td>
 				<td align="center">{{i.roll}}</td>
-				<td align="center"><a href="{% url 'student' %}">Edit</a></td>
+				{% comment %} <td align="center"><a href="{% url 'student' %}">Edit</a></td>	 {% endcomment %}
+				<td colspan="2" align="center"><input type="submit" name="submit" value="Edit"></td>
 			</tr>
 		</table>
 		{% endfor %}

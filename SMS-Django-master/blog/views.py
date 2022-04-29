@@ -18,8 +18,8 @@ def index(request):
             if  roll == roll_no and  standard == stand  :
                 data = s
             else:
-                res = "No Record Found..."
-        return render(request, "blog/index.html", { "data": data,})
+                  res = ("<h1>No Record Found...</h1>")
+        return render(request, "blog/index.html", { "data": data})
     return render(request, "blog/student.html")
 
 
@@ -37,8 +37,8 @@ def student(request):
         )
         user.save()
         print("User created")
-        return redirect("/")
-    return render(request, "blog/Student.html")
+        return redirect("#")
+    return render(request, "blog/student.html")
 # def search(request):
 #     if request.method == "POST":
 #        std = request.POST["std"]
@@ -66,7 +66,7 @@ def update(request):
 		for i in stu:
 			if name in i.name:
 				data.append((s,i))
-				s+=1
+				s=1
 		return render(request,'blog/update.html',{'data':data})
 	return render(request,'blog/update.html',{'obj':obj})
 
@@ -80,7 +80,7 @@ def delete(request):
 		name= request.POST['name']
 		stu=Student.objects.filter(standard=standard,name=name)
 		if stu.exists():
-			data=stu.delete()
+			data=stu.first()
 		else:
 			HttpResponse("<h1>Data not found</h1>")
 		return render(request,'blog/delete.html',{'data':data})
