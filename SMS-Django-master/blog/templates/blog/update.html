@@ -69,6 +69,7 @@
 				<th>No</th>
 				<th>Image</th>
 				<th>Full Name</th>
+				<th>standard </th>
 				<th>Roll No</th>
 				<th>Edit</th>
 			</tr>
@@ -86,7 +87,7 @@
 				<td align="center">{{i.name}}</td>
 				<td align="center">{{i.standard}}</td>
 				<td align="center">{{i.roll}}</td>
-				<td align="center"><a href="{% url 'insert' %}">Edit</a></td>
+				<td align="center"><a href="{% url 'student' %}">Edit</a></td>
 			</tr>
 		</table>
 		{% endfor %}

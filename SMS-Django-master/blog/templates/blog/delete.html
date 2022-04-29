@@ -58,9 +58,10 @@
 	
 		<table align="center" width="80%" border="2" style="margin-top: 10px;">
 			<tr style="background-color: #000; color: #fff;">
-				<th>No</th>
+				{% comment %} <th>No</th> {% endcomment %}
 				<th>Image</th>
 				<th>Full Name</th>
+				<th>Standard</th>
 				<th>Roll No</th>
 				<th>Edit</th>
 			</tr>
@@ -71,9 +72,10 @@
 		<table align="center" width="80%" border="1" style="margin-top: 10px;">
 			<tr>
 				<!-- <td align="center">{{data.image}}</td> -->
-				<td align="center">{{ forloop.counter }}</td>
-				<td rowspan="5"><img src="{{ data.image.url }}" style="max-height: 120px; max-width: 70px; padding-left: 10px;"></td>
+				{% comment %} <td align="center">{{ forloop.counter }}</td> {% endcomment %}
+				<td rowspan="8"><img src="{{ data.img.url }}" style="max-height: 120px; max-width: 70px; padding-left: 10px;"></td>
 				<td align="center">{{data.name}}</td>
+				<td align="center">{{data.standard}}</td>
 				<td align="center">{{data.roll}}</td>
 				<td align="center"><a href="#">Delete</a></td>
 			</tr>

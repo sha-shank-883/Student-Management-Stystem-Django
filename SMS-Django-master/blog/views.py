@@ -9,7 +9,7 @@ def index(request):
     obj = Student.objects.all()
     data = ""
     if request.method == "POST":
-        roll = int(request.POST["rollno"])
+        roll = int(request.POST["roll"])
         standard = request.POST["standard"]
         for s in obj:
             stand = str(s.standard)
@@ -19,13 +19,13 @@ def index(request):
                 data = s
             else:
                 res = "No Record Found..."
-        return render(request, "blog/student.html", { "res": res, "data": data})
+        return render(request, "blog/index.html", { "data": data,})
     return render(request, "blog/student.html")
 
 
 def student(request):
     if request.method == "POST":
-        id=request.POST['id']
+        # id=request.POST['id']
         roll = request.POST["roll"]
         name = request.POST["name"]
         city = request.POST["city"]
@@ -33,7 +33,7 @@ def student(request):
         standard = request.POST["standard"]
         img = request.FILES["img"]
         user = Student.objects.create(
-          id=id, roll=roll, name=name, city=city, contact=contact, standard=standard, img=img
+         roll=roll, name=name, city=city, contact=contact, standard=standard, img=img
         )
         user.save()
         print("User created")
@@ -80,7 +80,7 @@ def delete(request):
 		name= request.POST['name']
 		stu=Student.objects.filter(standard=standard,name=name)
 		if stu.exists():
-			data=stu.first()
+			data=stu.delete()
 		else:
 			HttpResponse("<h1>Data not found</h1>")
 		return render(request,'blog/delete.html',{'data':data})

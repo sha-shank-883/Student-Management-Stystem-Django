@@ -17,7 +17,7 @@
 </head>
 <body bgcolor="D7D4DF";>
 	<div class="admintitle" align="center">
-		<h3><a class="hlink" href="{% url 'student' %}" style="float: right; margin-right: 30px; color: #fff; font-size: 20px;">Home</a></h3>
+		<h3><a class="hlink" href="{% url 'index' %}" style="float: right; margin-right: 30px; color: #fff; font-size: 20px;">Home</a></h3>
 		<h3><a class="hlink" href="{% url 'dashboard' %}" style="float: left; margin-right: 30px; color: #fff; font-size: 20px;">Dashboard</a></h3>
 		<h1>Welcome to Dashboard - Insert Data</h1>
 	</div>
@@ -25,10 +25,10 @@
 	<form method="post"  enctype="multipart/form-data" >
 		{% csrf_token %}
 		<table class="insert" align="center" border="2" style="width: 50%; margin-top: 40px;">
-			<tr >
+			{% comment %} <tr >
 				<th>Id</th>
 				<td><input type="text" name="id" placeholder="Id" required></td>
-			</tr>
+			</tr> {% endcomment %}
 			<tr >
 				<th>Roll No</th>
 				<td><input type="text" name="roll"  placeholder="Enter Roll No" required></td>
