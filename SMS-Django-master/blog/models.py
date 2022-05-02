@@ -29,8 +29,8 @@ standard = (
 
 
 class Student(models.Model):
-    # Id = models.AutoField(primary_key=True, default=0)
-    roll = models.IntegerField(default=0)
+    Id = models.AutoField(primary_key=True)
+    roll = models.IntegerField(default=1)
     name = models.CharField(max_length=30)
     city = models.CharField(max_length=20)
     contact = models.CharField(max_length=20)

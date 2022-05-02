@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, redirect, HttpResponse
 from .models import Student, About, Feedback, Contact
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
@@ -18,9 +19,9 @@ def index(request):
             if  roll == roll_no and  standard == stand  :
                 data = s
             else:
-                  res = ("<h1>No Record Found...</h1>")
-        return render(request, "blog/index.html", { "data": data})
-    return render(request, "blog/student.html")
+                  return HttpResponse ("<h1>No Record Found...</h1>")
+        return render(request, "blog/index.html", { "data": data} )
+    return render(request, "blog/index.html")
 
 
 def student(request):
@@ -37,7 +38,7 @@ def student(request):
         )
         user.save()
         print("User created")
-        return redirect("#")
+        return redirect("blog/student.html")
     return render(request, "blog/student.html")
 # def search(request):
 #     if request.method == "POST":
@@ -57,6 +58,7 @@ def student(request):
 def update(request):
 	obj= Student.objects.all()
 	obj=Student.objects.order_by().values('standard').distinct()
+    # obj=Student.objects.get(name=req.POst>get('name'))
 	if request.method == 'POST':
 		data=[]
 		s=1
@@ -66,15 +68,33 @@ def update(request):
 		for i in stu:
 			if name in i.name:
 				data.append((s,i))
-				s=1
+				s+=1
 		return render(request,'blog/update.html',{'data':data})
 	return render(request,'blog/update.html',{'obj':obj})
 
 
+
+# def delete(request):
+# 	obj= Student.objects.all()
+# 	obj=Student.objects.order_by().values('standard').distinct()
+# 	if request.method == 'POST' and 'delete' in request.POST:
+# 		data=''
+# 		standard=request.POST['standard']
+# 		name= request.POST['name']
+# 		st=Student.objects.filter(standard=standard,name=name)
+# 		if st.exists():
+# 			data=st.first().delete()
+# 		else:
+# 			HttpResponse("<h1>Data not found</h1>")
+# 		return render(request,'blog/delete.html',{'data':data})
+# 	return render(request,'blog/delete.html',{'obj':obj})
+
+
+    
 def delete(request):
 	obj= Student.objects.all()
 	obj=Student.objects.order_by().values('standard').distinct()
-	if request.method == 'POST':
+	if request.method == 'POST' and 'submit' in request.POST:
 		data=''
 		standard=request.POST['standard']
 		name= request.POST['name']
@@ -82,9 +102,19 @@ def delete(request):
 		if stu.exists():
 			data=stu.first()
 		else:
-			HttpResponse("<h1>Data not found</h1>")
+			return HttpResponse("<h1>No Data Found</h1>")
 		return render(request,'blog/delete.html',{'data':data})
 	return render(request,'blog/delete.html',{'obj':obj})
+
+# def delete(request):
+#     context ={}
+#     obj = get_object_or_404(Student)
+#     if request.method =="POST":
+#         obj.delete()
+#         return HttpResponseRedirect('blog/delete.html')
+#     return render(request, 'blog/delete.html', context)
+
+
 
 
 def about(request):
