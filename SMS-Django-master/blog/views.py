@@ -19,7 +19,7 @@ def index(request):
             if  roll == roll_no and  standard == stand  :
                 data = s
             else:
-                  return HttpResponse ("<h1>No Record Found...</h1>")
+                  res =  ("<h1>No Record Found...</h1>")
         return render(request, "blog/index.html", { "data": data} )
     return render(request, "blog/index.html")
 
@@ -38,7 +38,7 @@ def student(request):
         )
         user.save()
         print("User created")
-        return redirect("blog/student.html")
+        return redirect("/")
     return render(request, "blog/student.html")
 # def search(request):
 #     if request.method == "POST":
