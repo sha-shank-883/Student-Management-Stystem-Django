@@ -83,12 +83,12 @@
 
 				<!-- <td align="center">{{data.image}}</td> -->
 				<td align="center">{{ s }}</td>
-				<td rowspan="5"><img src="{{ i.img.url }}" style="max-height: 120px; max-width: 70px; padding-left: 10px;"></td>
+				<td  align="center" rowspan="5"><img src="{{ i.img.url }}" style="max-height: 120px; max-width: 70px; padding-left: 10px;"></td>
 				<td align="center">{{i.name}}</td>
 				<td align="center">{{i.standard}}</td>
 				<td align="center">{{i.roll}}</td>
 				{% comment %} <td align="center"><a href="{% url 'student' %}">Edit</a></td>	 {% endcomment %}
-				<td colspan="2" align="center"><input type="submit" name="submit" value="Edit"></td>
+				<td align="center" colspan="2" align="center"><input type="submit" name="submit" value="Edit"></td>
 			</tr>
 		</table>
 		{% endfor %}

@@ -69,18 +69,18 @@
 
 <!-- {% if data %} -->
 	<!-- {% if user.is_authenticated %} -->
-	<form method="POST">
-		{% csrf_token %}
+	{% comment %} <form method="POST">
+		{% csrf_token %} {% endcomment %}
 		<table align="center" width="80%" border="1" style="margin-top: 10px;">
 			<tr>
 				<!-- <td align="center">{{data.image}}</td> -->
 				<td align="center">{{ s }}</td>
-				<td rowspan="8"><img src="{{ data.img.url }}" style="max-height: 120px; max-width: 70px; padding-left: 10px;"></td>
+				<td align="center" rowspan="8"><img src="{{ data.img.url }}" style="max-height: 120px; max-width: 70px; padding-left: 10px;"></td>
 				<td align="center">{{data.name}}</td>
 				<td align="center">{{data.standard}}</td>
 				<td align="center">{{data.roll}}</td>
-				 <td colspan="2"><input type="submit" name="delete" value="Delete"></td>
-				</form>
+				 <td align="center" colspan="2"><input type="submit" name="delete" value="Delete"></td>
+				{% comment %} </form> {% endcomment %}
 			</tr>
 		</table>
 	
